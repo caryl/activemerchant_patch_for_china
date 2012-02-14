@@ -22,9 +22,10 @@ module ActiveMerchant #:nodoc:
           mapping :spbill_create_ip, 'spbill_create_ip' # 用户IP（非商户服务器IP），为了防止欺诈，支付时财付通会校验此IP。（此值必填，否则报签名不正确）
           mapping :charset, 'cs' # 字符编码标准，gbk或者utf-8
 
+          mapping :bank_type, 'bank_type' #网银类型
           def initialize(order, account, options = {})
             super
-            add_field('bank_type', 0)
+            #add_field('bank_type', 0)
             add_field('purchaser_id', '') # 用户(买方)的财付通帐户(QQ或EMAIL),如无法获取，填空值
           end
 
