@@ -31,7 +31,7 @@ module ActiveMerchant #:nodoc:
 
             hash_keys = %w(cmdno pay_result date transaction_id sp_billno total_fee fee_type attach)
 
-            md5_string = hash_keys.inject([]){|array, key| array << "#{key}=#{@params[key]}"}.join("&")
+            md5_string = hash_keys.inject([]){|array, k| array << "#{k}=#{@params[k]}"}.join("&")
 
             unless Digest::MD5.hexdigest(md5_string+"&key=#{key}") == @params["sign"].downcase
               @message = "Tenpay Error: ILLEGAL_SIGN"
